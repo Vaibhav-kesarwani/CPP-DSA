@@ -15,25 +15,26 @@ int binarySearch (int arr[], int size, int key) {
     int start = 0;
     int end = size - 1;
 
-    int mid = (start + end) / 2;
+    int mid = start + (end - start) / 2;
 
     while (start <= end) {
+        // checking if the element is present in the mid of that particular array / sub array.
         if (arr[mid] == key) {
             return mid;
         }
 
-        // goto right side of the array
+        // goto to the right side of the array
         if (key > arr[mid]) {
             start = mid + 1;
         }
 
-        // goto left side of the array
-        else {
+        // goto the left side of the array
+        else { //key < arr[mid]
             end = mid - 1;
         }
 
-        // Updating the mid variable
-        mid = (start + end) / 2;
+        // updating the value of the mid index
+        mid = start + (end - start) / 2;
     }
 
     return -1;
@@ -44,7 +45,7 @@ int main(){
 
     // int ans = linearSearch(arr, 8, 10);
 
-    int ans = binarySearch(arr, 6, 50);
+    int ans = binarySearch(arr, 6, 25);
 
     cout << ans << endl;
 
